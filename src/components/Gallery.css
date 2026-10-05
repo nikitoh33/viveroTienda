@@ -1,0 +1,72 @@
+/* ==========================================================================
+   Gallery Section with DriftWall 3D
+   ========================================================================== */
+
+.gallery-section {
+  padding: 85px 0 95px;
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .gallery-section {
+    padding: 55px 0 65px;
+  }
+}
+
+.gallery-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 38px;
+  padding: 0 24px;
+}
+
+.gallery-badges-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.gallery-pill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(37, 106, 66, 0.08);
+  border: 1px solid rgba(37, 106, 66, 0.2);
+  color: var(--forest-dark);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.drift-wall-container {
+  position: relative;
+  width: 100%;
+  height: 720px;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .drift-wall-container {
+    height: 480px;
+    border-radius: 0;
+  }
+
+  .gallery-pill-tag {
+    font-size: 0.72rem;
+    padding: 5px 10px;
+  }
+}

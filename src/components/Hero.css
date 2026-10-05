@@ -1,0 +1,325 @@
+/* ==========================================================================
+   Hero Section with Full Photographic Backdrop & Natural High-Contrast Readability
+   ========================================================================== */
+
+.hero-section {
+  position: relative;
+  min-height: clamp(620px, 90vh, 820px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+}
+
+/* Background Visual Layer - Crisp Real Photograph */
+.hero-bg-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  filter: contrast(1.05) brightness(0.96) saturate(1.1);
+  transform: scale(1.02);
+}
+
+/* Subtle Neutral Overlay: Transparent, no green tint, allows photo to shine through */
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(
+      180deg, 
+      rgba(0, 0, 0, 0.42) 0%, 
+      rgba(0, 0, 0, 0.22) 32%, 
+      rgba(0, 0, 0, 0.38) 68%, 
+      rgba(0, 0, 0, 0.55) 86%, 
+      var(--bg-primary, #edf2ea) 100%
+    );
+}
+
+/* Foreground Content - Offset for fixed navbar */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 120px 24px 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Animations */
+.anim-fade-up {
+  opacity: 0;
+  animation: hero-fade-up 540ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes hero-fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+/* Hero Pill Badge */
+.hero-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #a7f3d0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin-bottom: 24px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.pill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 10px #34d399;
+}
+
+/* Headline with Crystal Clear Contrast over Natural Photo */
+.hero-headline {
+  font-size: clamp(2.35rem, 5.4vw, 3.9rem);
+  font-weight: 850;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+  max-width: 920px;
+  margin: 0 0 20px;
+  text-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.9),
+    0 4px 28px rgba(0, 0, 0, 0.75),
+    0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+.hero-gradient-text {
+  display: block;
+  color: #bbf7d0;
+  margin-top: 6px;
+  text-shadow: 
+    0 2px 12px rgba(0, 0, 0, 0.9),
+    0 4px 24px rgba(0, 0, 0, 0.8);
+}
+
+/* Description */
+.hero-description {
+  font-size: clamp(1.05rem, 2.1vw, 1.25rem);
+  line-height: 1.65;
+  color: #ffffff;
+  max-width: 720px;
+  margin: 0 0 38px;
+  text-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.95),
+    0 4px 18px rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+}
+
+/* Call to Actions */
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 46px;
+}
+
+.btn-primary-botanical {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: #1b4d30;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 0.98rem;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary-botanical:hover {
+  background: #256a42;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+}
+
+.btn-whatsapp-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: #ffffff;
+  color: #12281a;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  font-size: 0.98rem;
+  font-weight: 700;
+  padding: 13px 26px;
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-whatsapp-hero svg {
+  color: #25d366;
+}
+
+.btn-whatsapp-hero:hover {
+  background: #f8faf6;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* Responsive Metrics Bar (Capsule Frosted Glass) */
+.hero-metrics-row {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  background: rgba(0, 0, 0, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 14px 34px;
+  border-radius: 9999px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.4);
+}
+
+.hero-metric-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.metric-number {
+  font-size: 1.38rem;
+  font-weight: 850;
+  color: #6ee7b7;
+  letter-spacing: -0.02em;
+}
+
+.metric-text {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.hero-metric-divider {
+  width: 1px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.mobile-break {
+  display: inline;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: auto;
+  }
+
+  .hero-content {
+    padding: 95px 16px 56px;
+  }
+
+  .hero-headline {
+    margin-bottom: 16px;
+  }
+
+  .hero-description {
+    margin-bottom: 28px;
+  }
+
+  .hero-ctas {
+    gap: 12px;
+    margin-bottom: 34px;
+    width: 100%;
+  }
+
+  .btn-primary-botanical,
+  .btn-whatsapp-hero {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-metrics-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    max-width: 100%;
+    gap: 4px;
+    padding: 12px 8px;
+    border-radius: 18px;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .hero-metric-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 3px;
+    padding: 0 2px;
+  }
+
+  .metric-number {
+    font-size: 1.12rem;
+    font-weight: 850;
+    line-height: 1.1;
+    color: #6ee7b7;
+  }
+
+  .metric-text {
+    font-size: 0.68rem;
+    line-height: 1.2;
+    text-align: center;
+    color: #ffffff;
+    opacity: 0.92;
+  }
+
+  .hero-metric-divider {
+    display: none;
+  }
+}

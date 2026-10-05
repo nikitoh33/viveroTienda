@@ -1,0 +1,141 @@
+/* ==========================================================================
+   Footer Styles (Warm Organic Theme)
+   ========================================================================== */
+
+.vivero-footer {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  padding: 44px 24px 34px;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 40px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-disclaimer p {
+  margin: 0;
+  font-size: 0.76rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.footer-divider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: 20px 0 28px;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+@media (max-width: 900px) {
+  .footer-columns {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+}
+
+@media (max-width: 500px) {
+  .footer-columns {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .footer-col.owner-col {
+    grid-column: span 2;
+  }
+}
+
+.footer-col h4 {
+  font-size: 0.84rem;
+  font-weight: 750;
+  color: var(--text-primary);
+  margin: 0 0 14px;
+  letter-spacing: -0.01em;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-col ul a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-col ul a:hover {
+  color: var(--color-green);
+}
+
+/* Owner Column */
+.owner-col p {
+  margin: 0 0 14px;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.btn-footer-owner {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.btn-footer-owner:hover {
+  background: var(--color-forest);
+  color: #ffffff;
+  border-color: var(--color-forest);
+}
+
+/* Bottom Bar */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-copy {
+  color: var(--text-muted);
+  font-size: 0.76rem;
+}
+
+.footer-legal-links {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-legal-links a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.76rem;
+  transition: color 0.15s ease;
+}
+
+.footer-legal-links a:hover {
+  color: var(--color-forest);
+}

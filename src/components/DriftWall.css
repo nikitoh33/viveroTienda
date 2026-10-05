@@ -1,0 +1,169 @@
+/* ==========================================================================
+   DriftWall 3D - High Performance (GPU Accelerated, 60fps Smooth)
+   ========================================================================== */
+
+.drift-wall {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  perspective: var(--dw-perspective, 1100px);
+  perspective-origin: 50% 50%;
+  touch-action: pan-y;
+  --dw-tile-w: 260px;
+  --dw-tile-h: 172px;
+  --dw-gap: 20px;
+  --dw-radius: 18px;
+  --dw-lift: 54px;
+  --dw-dim: 0.78;
+  --dw-gray: 0;
+  --dw-overlay: #123220;
+}
+
+/* Seamless Panoramic Edge Dissolve (blends smoothly into the page background) */
+.drift-wall__vignette {
+  position: absolute;
+  inset: -2px;
+  pointer-events: none;
+  z-index: 5;
+  background:
+    radial-gradient(ellipse 65% 65% at 50% 50%, transparent 35%, var(--bg-primary, #edf2ea) 98%),
+    linear-gradient(to bottom, var(--bg-primary, #edf2ea) 0%, transparent 18%, transparent 82%, var(--bg-primary, #edf2ea) 100%),
+    linear-gradient(to right, var(--bg-primary, #edf2ea) 0%, transparent 14%, transparent 86%, var(--bg-primary, #edf2ea) 100%);
+}
+
+.drift-wall__plane {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: row;
+  transform-style: preserve-3d;
+  cursor: grab;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.drift-wall__plane:active {
+  cursor: grabbing;
+}
+
+.drift-wall__col {
+  position: relative;
+  width: calc(var(--dw-tile-w) + var(--dw-gap));
+  transform-style: preserve-3d;
+}
+
+.drift-wall__track {
+  display: flex;
+  flex-direction: column;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.drift-wall__tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: calc(var(--dw-tile-h) + var(--dw-gap));
+  flex: 0 0 auto;
+  outline: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.drift-wall__inner {
+  position: absolute;
+  inset: calc(var(--dw-gap) / 2);
+  display: block;
+  border-radius: var(--dw-radius);
+  overflow: hidden;
+  background: #0d1e15;
+  opacity: var(--dw-dim);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px -6px rgba(10, 30, 18, 0.4);
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1),
+    opacity 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.drift-wall__tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(var(--dw-gray)) saturate(0.95);
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: filter 0.35s ease;
+}
+
+.drift-wall__overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--dw-overlay);
+  opacity: 0.35;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.drift-wall__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 12px;
+  background: linear-gradient(to top, rgba(10, 26, 17, 0.92) 0%, transparent 100%);
+  color: #f7f3eb;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.drift-wall__tile.is-active .drift-wall__caption,
+.drift-wall__tile:focus-visible .drift-wall__caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.drift-wall__tile.is-active .drift-wall__inner,
+.drift-wall__tile:focus-visible .drift-wall__inner {
+  opacity: 1;
+  transform: translateZ(var(--dw-lift)) scale(1.03);
+  box-shadow: 0 20px 48px -10px rgba(6, 20, 12, 0.85);
+  border-color: rgba(255, 255, 255, 0.35);
+  z-index: 10;
+}
+
+.drift-wall__tile.is-active img,
+.drift-wall__tile:focus-visible img {
+  filter: grayscale(0) saturate(1.1);
+}
+
+.drift-wall__tile.is-active .drift-wall__overlay,
+.drift-wall__tile:focus-visible .drift-wall__overlay {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drift-wall__plane,
+  .drift-wall__track {
+    will-change: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .drift-wall {
+    --dw-tile-w: 175px;
+    --dw-tile-h: 120px;
+    --dw-gap: 14px;
+    --dw-lift: 28px;
+  }
+}
